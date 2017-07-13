@@ -1,5 +1,5 @@
 {
-  "name":"vue-resumer",
+  "name": "vue-resumer",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "hanhanhuang <549551740@qq.com>",
@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^1.3.7",
     "normalize.css": "^7.0.0",
     "vue": "^2.3.3"
   },

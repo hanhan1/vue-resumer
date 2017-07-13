@@ -2,8 +2,8 @@
  <div id="topbar">
    <div class="logo">VueResumer</div>
    <div class="actions">
-       <button>登陆</button>
-       <button>注册</button>
+       <el-button type="primary">登陆</el-button>
+       <el-button >注册</el-button>
    </div>
  </div>
 </template>
@@ -12,6 +12,8 @@
    #topbar{
      display:flex;
      justify-content:space-between;
+     align-items:center;
+     font-size:20px;
      padding:16px;
    }
 

@@ -33,20 +33,28 @@ html,body,#app{height: 100%; overflow: hidden;}
   flex-direction:column;
 }
 .topbar{
-  background:white;
+  position:relative; z-index:1;
+  box-shadow: 0  0 3px hsla(0,0,0,0.5);
 }
 
 main{
   background:white;
   display:flex;
   flex:1;
-
+  background: #DDD;
  > .editor{
-  width:20em;
+  width:40em;
+  margin:16px 8px 16px 16px;
+  background:white;
+  border-radius:4px;
+  box-shadow: 0  0 3px hsla(0,0,0,0.5);
  }
 
  >.preview{
   flex:1;
+  margin:16px 16px 16px 8px;
+  border-radius:4px;
+  box-shadow: 0  0 3px hsla(0,0,0,0.5);
  }
 }
 </style>
