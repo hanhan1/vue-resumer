@@ -33,11 +33,11 @@ html,body,#app{height: 100%; overflow: hidden;}
   flex-direction:column;
 }
 .topbar{
-  background:red;
+  background:white;
 }
 
 main{
-  background:green;
+  background:white;
   display:flex;
   flex:1;
 
