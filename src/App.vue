@@ -36,7 +36,12 @@ html,body,#app{height: 100%; overflow: hidden;}
   position:relative; z-index:1;
   box-shadow: 0  0 3px hsla(0,0,0,0.5);
 }
-
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 main{
   background:white;
   display:flex;
@@ -47,6 +52,7 @@ main{
   margin:16px 8px 16px 16px;
   background:white;
   border-radius:4px;
+  overflow: hidden;
   box-shadow: 0  0 3px hsla(0,0,0,0.5);
  }
 
@@ -54,6 +60,7 @@ main{
   flex:1;
   margin:16px 16px 16px 8px;
   border-radius:4px;
+  overflow:hidden;
   box-shadow: 0  0 3px hsla(0,0,0,0.5);
  }
 }
