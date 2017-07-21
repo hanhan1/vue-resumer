@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-  <Topbar class="topbar"/>
-  <main>
-  <Editor class="editor"/>
-
-  <Preview class="preview"/>
-  </main>
-</div>
+    <Topbar class="topbar" />
+    <main>
+      <Editor class="editor" />
+  
+      <Preview class="preview" />
+    </main>
+  </div>
 </template>
 
 <script>
@@ -15,53 +15,64 @@ import Editor from './components/Editor'
 
 import Preview from './components/Preview'
 export default {
- 
+
   components: {
-    Topbar,Editor,Preview
+    Topbar, Editor, Preview
   }
 }
 </script>
 
 <style lang="scss">
-html,body,#app{height: 100%; overflow: hidden;}
+html,
+body,
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothiing: grayscale;
   height: 100vh;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 }
-.topbar{
-  position:relative; z-index:1;
-  box-shadow: 0  0 3px hsla(0,0,0,0.5);
+
+.topbar {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
 }
+
 .icon {
-  width: 1em; height: 1em;
+  width: 1em;
+  height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
-main{
-  background:white;
-  display:flex;
-  flex:1;
-  background: #DDD;
- > .editor{
-  width:40em;
-  margin:16px 8px 16px 16px;
-  background:white;
-  border-radius:4px;
-  overflow: hidden;
-  box-shadow: 0  0 3px hsla(0,0,0,0.5);
- }
 
- >.preview{
-  flex:1;
-  margin:16px 16px 16px 8px;
-  border-radius:4px;
-  overflow:hidden;
-  box-shadow: 0  0 3px hsla(0,0,0,0.5);
- }
+main {
+  background: white;
+  display: flex;
+  flex: 1;
+  background: #DDD;
+  >.editor {
+    width: 40em;
+    margin: 16px 8px 16px 16px;
+    background: white;
+    border-radius: 4px;
+    overflow: auto;
+    box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
+  }
+
+  >.preview {
+    flex: 1;
+    margin: 16px 16px 16px 8px;
+    border-radius: 4px;
+    overflow: auto;
+    box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
+  }
 }
 </style>
