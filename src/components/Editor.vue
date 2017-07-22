@@ -12,22 +12,40 @@
     </nav>
     <ol class="panes">
       <li v-bind:class="{active:currentTab === 0}">
-        <ProfileEditor v-bind:profile="profile"/>
-        </li>
+        <ProfileEditor v-bind:profile="profile" />
+      </li>
       <li v-bind:class="{active:currentTab===1}">
-        <WorkHistoryEditor v-bind:workHistory="workHistory"/>
-       </li>
+        <ArrayEditor v-bind:items="workHistory" v-bind:labels="{company:'公司',content:'工作内容'}" v-bind:title="'工作经历'" />
+      </li>
       <li v-bind:class="{active:currentTab===2}">
-        <h2>学习经历</h2>
+        <ArrayEditor v-bind:items="studyHistory" v-bind:labels="{school:'学校',duration:'时间'}" v-bind:title="'学习经历'" />
       </li>
       <li v-bind:class="{active:currentTab===3}">
-        <h2>兴趣爱好</h2>
+        <ArrayEditor v-bind:items="projectHistory" v-bind:labels="{project:'项目',content:'项目内容'}" v-bind:title="'项目经历'" />
       </li>
       <li v-bind:class="{active:currentTab===4}">
-        <h2>获奖经历</h2>
+        <ArrayEditor v-bind:items="rewardHistory" v-bind:labels="{reward:'奖项',time:'时间'}" v-bind:title="'获奖经历'" />
       </li>
       <li v-bind:class="{active:currentTab===5}">
-        <h2>联系方式</h2>
+        
+  
+          <h2>联系方式</h2>
+          <el-form>
+            <el-form-item label="微信">
+              <el-input v-model="contactMethod.weChat"></el-input>
+            </el-form-item>
+            <el-form-item label="手机">
+              <el-input v-model="contactMethod.mobile"></el-input>
+            </el-form-item>
+            <el-form-item label="QQ">
+              <el-input v-model="contactMethod.QQ"></el-input>
+            </el-form-item>
+            <el-form-item label="E-mail">
+              <el-input v-model="contactMethod.email"></el-input>
+            </el-form-item>
+          </el-form>
+  
+        
       </li>
   
     </ol>
@@ -36,9 +54,9 @@
 
 <script>
 import ProfileEditor from './ProfileEditor'
-import WorkHistoryEditor from './WorkHistoryEditor'
+import ArrayEditor from './ArrayEditor'
 export default {
-  components:{ProfileEditor,WorkHistoryEditor},
+  components: { ProfileEditor, ArrayEditor },
   data() {
     return {
       currentTab: 0,
@@ -48,18 +66,44 @@ export default {
         city: '',
         birth: ''
       },
-      workHistory:[
+      workHistory: [
         {
-          company:'',
-          content:'',
+          company: '',
+          content: '',
         }
-      ]
+      ],
+      studyHistory: [
+        {
+          school: '',
+          duration: '',
+        }
+      ],
+      projectHistory: [
+        {
+          project: '',
+          content: ''
+        }
+      ],
+      rewardHistory: [
+        {
+          reward: '',
+          time: ''
+        }
+      ],
+      contactMethod:[
+        {
+          QQ:'',
+          weChat:'',
+          email:'',
+          mobile:'',
+        }
+      ],
 
     }
 
   },
-  methods:{
-    
+  methods: {
+
   }
 
 }
@@ -93,11 +137,12 @@ export default {
   }
   >.panes {
     flex: 1;
-    .container{
+    .container {
       position: relative;
-      .el-icon-delete{
+      .el-icon-delete {
         position: absolute;
-        right: 0;top:0;
+        right: 0;
+        top: 0;
       }
     }
     >li {
