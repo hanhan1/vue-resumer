@@ -107,7 +107,7 @@ body,
   overflow: hidden;
 }
 
-main {
+#app main {
   background: white;
   display: flex;
   flex: 1;
