@@ -1,11 +1,12 @@
 <template>
-  <div id="app">
-    <Topbar class="topbar" />
+  <div id="app" v-bind:class="{previewMode:previewMode}">
+    <Topbar class="topbar" v-on:preview="preview" />
     <main>
-      <Editor class="editor" />
+      <Editor v-bind:resume="resume" class="editor" />
   
-      <Preview class="preview" />
+      <Preview v-bind:resume="resume" class="preview" />
     </main>
+    <el-button id="exitPreview" v-on:click="exitPreview">退出预览</el-button>
   </div>
 </template>
 
@@ -18,7 +19,60 @@ export default {
 
   components: {
     Topbar, Editor, Preview
-  }
+  },
+
+  data() {
+    return {
+      previewMode: false,
+      resume: {
+        profile: {
+          name: '',
+          city: '',
+          birth: ''
+        },
+        workHistory: [
+          {
+            company: '',
+            content: ''
+          }
+        ],
+        studyHistory: [
+          {
+            school: '',
+            duration: ''
+          }
+        ],
+        projectHistory: [
+          {
+            project: '',
+            content: ''
+          }
+        ],
+        rewardHistory: [
+          {
+            reward: '',
+            time: ''
+          }
+        ],
+        contactMethod: [
+          {
+            QQ: '',
+            weChat: '',
+            email: '',
+            mobile: ''
+          }
+        ],
+      },
+    }
+  },
+  methods: {
+    preview() {
+      this.previewMode = true
+    },
+    exitPreview(){
+      this.previewMode = false
+    },
+  },
 }
 </script>
 
@@ -63,7 +117,7 @@ main {
     margin: 16px 8px 16px 16px;
     background: white;
     border-radius: 4px;
-    overflow: auto;
+    overflow: hidden;
     box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
   }
 
@@ -74,5 +128,26 @@ main {
     overflow: auto;
     box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
   }
+}
+
+.previewMode>#topbar {
+  display: none;
+}
+
+.previewMode #editor {
+  display: none;
+}
+
+.previewMode #preview {
+  max-width: 800px;
+  margin: 32px auto;
+}
+#exitPreview{
+  display: none;
+}
+.previewMode #exitPreview{
+  display: inline-block;
+  position: fixed;
+  right: 16px;
 }
 </style>

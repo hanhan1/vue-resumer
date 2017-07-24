@@ -12,19 +12,19 @@
     </nav>
     <ol class="panes">
       <li v-bind:class="{active:currentTab === 0}">
-        <ProfileEditor v-bind:profile="profile" />
+        <ProfileEditor v-bind:profile="resume.profile" />
       </li>
       <li v-bind:class="{active:currentTab===1}">
-        <ArrayEditor v-bind:items="workHistory" v-bind:labels="{company:'公司',content:'工作内容'}" v-bind:title="'工作经历'" />
+        <ArrayEditor v-bind:items="resume.workHistory" v-bind:labels="{company:'公司',content:'工作内容'}" v-bind:title="'工作经历'" />
       </li>
       <li v-bind:class="{active:currentTab===2}">
-        <ArrayEditor v-bind:items="studyHistory" v-bind:labels="{school:'学校',duration:'时间'}" v-bind:title="'学习经历'" />
+        <ArrayEditor v-bind:items="resume.studyHistory" v-bind:labels="{school:'学校',duration:'时间'}" v-bind:title="'学习经历'" />
       </li>
       <li v-bind:class="{active:currentTab===3}">
-        <ArrayEditor v-bind:items="projectHistory" v-bind:labels="{project:'项目',content:'项目内容'}" v-bind:title="'项目经历'" />
+        <ArrayEditor v-bind:items="resume.projectHistory" v-bind:labels="{project:'项目',content:'项目内容'}" v-bind:title="'项目经历'" />
       </li>
       <li v-bind:class="{active:currentTab===4}">
-        <ArrayEditor v-bind:items="rewardHistory" v-bind:labels="{reward:'奖项',time:'时间'}" v-bind:title="'获奖经历'" />
+        <ArrayEditor v-bind:items="resume.rewardHistory" v-bind:labels="{reward:'奖项',time:'时间'}" v-bind:title="'获奖经历'" />
       </li>
       <li v-bind:class="{active:currentTab===5}">
         
@@ -32,16 +32,16 @@
           <h2>联系方式</h2>
           <el-form>
             <el-form-item label="微信">
-              <el-input v-model="contactMethod.weChat"></el-input>
+              <el-input v-model="resume.contactMethod.weChat"></el-input>
             </el-form-item>
             <el-form-item label="手机">
-              <el-input v-model="contactMethod.mobile"></el-input>
+              <el-input v-model="resume.contactMethod.mobile"></el-input>
             </el-form-item>
             <el-form-item label="QQ">
-              <el-input v-model="contactMethod.QQ"></el-input>
+              <el-input v-model="resume.contactMethod.QQ"></el-input>
             </el-form-item>
             <el-form-item label="E-mail">
-              <el-input v-model="contactMethod.email"></el-input>
+              <el-input v-model="resume.contactMethod.email"></el-input>
             </el-form-item>
           </el-form>
   
@@ -57,49 +57,12 @@ import ProfileEditor from './ProfileEditor'
 import ArrayEditor from './ArrayEditor'
 export default {
   components: { ProfileEditor, ArrayEditor },
+  props:['resume'],
   data() {
     return {
       currentTab: 0,
       icons: ['shenfenzheng', 'work', 'book', 'heartsurgery', 'jiangbei', 'phone'],
-      profile: {
-        name: '',
-        city: '',
-        birth: ''
-      },
-      workHistory: [
-        {
-          company: '',
-          content: '',
-        }
-      ],
-      studyHistory: [
-        {
-          school: '',
-          duration: '',
-        }
-      ],
-      projectHistory: [
-        {
-          project: '',
-          content: ''
-        }
-      ],
-      rewardHistory: [
-        {
-          reward: '',
-          time: ''
-        }
-      ],
-      contactMethod:[
-        {
-          QQ:'',
-          weChat:'',
-          email:'',
-          mobile:'',
-        }
-      ],
-
-    }
+         }
 
   },
   methods: {
