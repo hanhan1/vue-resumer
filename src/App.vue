@@ -54,14 +54,14 @@ export default {
             time: ''
           }
         ],
-        contactMethod: [
+        contact: 
           {
             QQ: '',
             weChat: '',
             email: '',
             mobile: ''
-          }
-        ],
+          },
+        
       },
     }
   },

@@ -1,18 +1,19 @@
 <template>
   <div>
     <h2>{{title}}</h2>
-   
+  
     <el-form>
       <div class="container" v-for="(work ,index) in items" v-bind:key="index">
         <el-form-item v-for="key in keys" v-bind:label="labels[key] || key" v-bind:key="key">
           <el-input v-model="work[key]"></el-input>
         </el-form-item>
-        
+  
         <i class="el-icon-delete" v-on:click="removeItem(index)"></i>
         <hr>
       </div>
   
       <el-button type="primary" v-on:click="addItem">add</el-button>
+      <el-button type="primary" v-on:click="saveItem">save</el-button>
     </el-form>
   
   </div>
@@ -34,7 +35,36 @@ export default {
     },
     removeItem(index){
       this.items.splice(index,1)
+    },
+    saveItem(index){
+      
+      if(this.items.length != 0){
+       this.items.push({
+        company:'',
+        content:''
+      })
+
+      
+      }else{
+        
+        this.items.splice(index,1)
+      }
+    },
+
+    filter(array) {
+      return array.filter(item => !this.isEmpty(item))
+    },
+    isEmpty(object) {
+      let empty = true
+      for (let key in object) {
+        if (object[key]) {
+          empty = false
+          break
+        }
+      }
+      return empty
     }
+
   }
 }
 </script>

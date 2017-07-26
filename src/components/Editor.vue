@@ -27,23 +27,7 @@
         <ArrayEditor v-bind:items="resume.rewardHistory" v-bind:labels="{reward:'奖项',time:'时间'}" v-bind:title="'获奖经历'" />
       </li>
       <li v-bind:class="{active:currentTab===5}">
-  
-        <h2>联系方式</h2>
-        <el-form>
-          <el-form-item label="微信">
-            <el-input v-model="resume.contactMethod.weChat"></el-input>
-          </el-form-item>
-          <el-form-item label="手机">
-            <el-input v-model="resume.contactMethod.mobile"></el-input>
-          </el-form-item>
-          <el-form-item label="QQ">
-            <el-input v-model="resume.contactMethod.QQ"></el-input>
-          </el-form-item>
-          <el-form-item label="E-mail">
-            <el-input v-model="resume.contactMethod.email"></el-input>
-          </el-form-item>
-        </el-form>
-  
+        <ContactEditor v-bind:contact="resume.contact"/>
       </li>
   
     </ol>
@@ -53,8 +37,9 @@
 <script>
 import ProfileEditor from './ProfileEditor'
 import ArrayEditor from './ArrayEditor'
+import ContactEditor from './ContactEditor'
 export default {
-  components: { ProfileEditor, ArrayEditor },
+  components: { ProfileEditor, ArrayEditor ,ContactEditor},
   props: ['resume'],
   data() {
     return {
