@@ -1,7 +1,7 @@
 <template>
   <div id="preview">
     
-    <h1>姓名  {{resume.profile.name }}</h1>
+    <h1> 姓名 {{resume.profile.name }}</h1>
     <p>城市：{{resume.profile.city }} | 出生年月：{{resume.profile.birth }}</p>
     <hr>
     <h2>工作经历</h2>
@@ -55,10 +55,23 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 #preview {
   background: white;
+  padding-left: 50px;
+  padding-right: 100px;
+  >h2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  >section{
+    min-height: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
 }
+
 </style>
 <script>
 export default {
@@ -80,4 +93,6 @@ export default {
   }
 }
 </script>
+
+
 

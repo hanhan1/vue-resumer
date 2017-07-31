@@ -13,7 +13,6 @@
       </div>
   
       <el-button type="primary" v-on:click="addItem">add</el-button>
-      <el-button type="primary" v-on:click="saveItem">save</el-button>
     </el-form>
   
   </div>
@@ -36,35 +35,6 @@ export default {
     removeItem(index){
       this.items.splice(index,1)
     },
-    saveItem(index){
-      
-      if(this.items.length != 0){
-       this.items.push({
-        company:'',
-        content:''
-      })
-
-      
-      }else{
-        
-        this.items.splice(index,1)
       }
-    },
-
-    filter(array) {
-      return array.filter(item => !this.isEmpty(item))
-    },
-    isEmpty(object) {
-      let empty = true
-      for (let key in object) {
-        if (object[key]) {
-          empty = false
-          break
-        }
-      }
-      return empty
-    }
-
-  }
 }
 </script>
