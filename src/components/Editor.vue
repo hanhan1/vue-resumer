@@ -2,7 +2,7 @@
   <div id="editor">
     <nav>
       <ol>
-        <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active:currentTab === i}" v-on:click="currentTab=i">
+        <li v-for="i in [0,1,2,3,4,5,6]" v-bind:class="{active:currentTab === i}" v-on:click="currentTab=i">
           <svg class="icon">
             <use v-bind:xlink:href="`#icon-${icons[i]}`"></use>
           </svg>
@@ -27,7 +27,12 @@
         <ArrayEditor v-bind:items="resume.rewardHistory" v-bind:labels="{reward:'奖项',time:'时间'}" v-bind:title="'获奖经历'" />
       </li>
       <li v-bind:class="{active:currentTab===5}">
-        <ContactEditor v-bind:contact="resume.contact"/>
+        <ContactEditor v-bind:contact="resume.contact" />
+      </li>
+      <li v-bind:class="{active:currentTab===6}">
+        <ContactEditor v-bind:contact="resume.contact" />
+        {{count}}
+        <button @click="add">test</button>
       </li>
   
     </ol>
@@ -39,17 +44,31 @@ import ProfileEditor from './ProfileEditor'
 import ArrayEditor from './ArrayEditor'
 import ContactEditor from './ContactEditor'
 export default {
-  components: { ProfileEditor, ArrayEditor ,ContactEditor},
+  components: { ProfileEditor, ArrayEditor, ContactEditor },
   props: ['resume'],
   data() {
     return {
       currentTab: 0,
-      icons: ['shenfenzheng', 'work', 'book', 'heartsurgery', 'jiangbei', 'phone'],
     }
 
   },
+  computed:{
+    count(){
+      return this.$store.state.count
+    },
+    icons:{
+      get(){
+        return this.$store.state.icons     
+      },
+      set(value){
+        return this.$store.commit('switchTab',value)
+      }
+    },
+  },
   methods: {
-
+    add(){
+      this.$store.commit('increment')
+    }
   }
 
 }

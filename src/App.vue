@@ -11,59 +11,38 @@
 </template>
 
 <script>
+import './assets/reset.scss'
+import 'normalize.css/normalize.css'
 import Topbar from './components/Topbar'
 import Editor from './components/Editor'
-
 import Preview from './components/Preview'
+import store from './store/index'
+import AV from './lib/leancloud'
+import getAVuser from './lib/getAVUser'
 export default {
-
+  store,
   components: {
     Topbar, Editor, Preview
+  },
+  created(){
+    document.body.insertAdjacentHTML('afterbegin',icons)
+    let state = localStorage.getItem('state')
+    if(state){
+      state = JSON.parse(state)
+    }
+    this.$store.commit('initState',state)
+    this.$store.commit('setUser',getAVuser())
   },
 
   data() {
     return {
       previewMode: false,
-      resume: {
-        profile: {
-          name: '',
-          city: '',
-          birth: ''
-        },
-        workHistory: [
-          {
-            company: '',
-            content: ''
-          }
-        ],
-        studyHistory: [
-          {
-            school: '',
-            duration: ''
-          }
-        ],
-        projectHistory: [
-          {
-            project: '',
-            content: ''
-          }
-        ],
-        rewardHistory: [
-          {
-            reward: '',
-            time: ''
-          }
-        ],
-        contact: 
-          {
-            QQ: '',
-            weChat: '',
-            email: '',
-            mobile: ''
-          },
-        
-      },
     }
+  },
+  computed:{
+    resume(){
+      return this.$store.state.resume
+    },
   },
   methods: {
     preview() {
@@ -82,6 +61,7 @@ body,
 #app {
   height: 100%;
   overflow: hidden;
+  
 }
 
 #app {
@@ -111,6 +91,9 @@ body,
   background: white;
   display: flex;
   flex: 1;
+  width: 100%;
+  align-self: center;
+
   background: #DDD;
   >.editor {
     width: 40em;
@@ -137,10 +120,15 @@ body,
 .previewMode #editor {
   display: none;
 }
-
 .previewMode #preview {
   max-width: 800px;
-  margin: 32px auto;
+
+  border: 2px solid red;
+  
+  display: block;
+  
+  
+  
 }
 #exitPreview{
   display: none;

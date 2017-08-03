@@ -17,7 +17,7 @@
   
   </div>
 </template>
-<<script>
+<script>
 export default {
   props:['items','labels','title'],
   computed:{
