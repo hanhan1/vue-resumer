@@ -10,7 +10,8 @@
         <input type="password" v-model="formData.password" required>
       </div>
       <div class="actions">
-        <input type="submit" value="提交">
+        <!--<input type="submit" value="提交">-->
+         <el-button  @click="signUp">注册</el-button>
         <span class="errorMessage">{{errorMessage}}</span>
       </div>
     </form>
@@ -29,24 +30,45 @@ export default {
         username: '',
         password: ''
       },
-      errorMessage:''
+      errorMessage:'',
+      currentUser:null,
     }
   },
   
   created() {
-
+     this.currentUser = this.getCurrentUser();
   },
   methods: {
-    signUp() {
-      let { username, password } = this.formData
-      var user = new AV.User();
-      user.setUsername(username);
-      user.setPassword(password);
-      user.signUp().then(() => {
+    // signUp() {
+    //   let { username, password } = this.formData
+    //   var user = new AV.User();
+    //   user.setUsername(username);
+    //   user.setPassword(password);
+    //   user.signUp().then(() => {
+    //   }, (error) => {
+    //    this.errorMessage=getErrorMessage(error)
+    //   });
+    // }
+
+    signUp: function () {
+      let user = new AV.User();
+      user.setUsername(this.formData.username);
+      user.setPassword(this.formData.password);
+      user.signUp().then((loginedUser) => {
+        this.currentUser = this.getCurrentUser()
       }, (error) => {
        this.errorMessage=getErrorMessage(error)
       });
-    }
+    },
+     getCurrentUser: function () {
+      let current = AV.User.current()
+      if (current) {
+        let { id, createdAt, attributes: { username } } = AV.User.current()
+        return { id, username, createdAt }
+      } else {
+        return null
+      }
+    },
   }
 
 }

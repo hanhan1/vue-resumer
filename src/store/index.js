@@ -6,13 +6,9 @@ export default new Vuex.Store({
     count: 0,
     icons: ['shenfenzheng', 'work', 'book', 'heartsurgery', 'jiangbei', 'phone', 'phone'],
     user: {
-
       id: '',
       username: ''
-
     },
-
-
     resume: {
       profile: {
         name: '',
@@ -60,8 +56,6 @@ export default new Vuex.Store({
     initState(state, payload) {
       Object.assign(state, payload)
     },
-
-
     switchTab(state, payload) {
       state.icons = payload
       localStorage.setItem('state', JSON.stringify(state))

@@ -12,7 +12,8 @@
     <section v-if="filter(resume.workHistory).length>0">
       <ul>
         <li v-for="work in filter(resume.workHistory)">
-          {{work.company}} {{work.content}}
+         <h3> {{work.company}} </h3>
+         <p v-show="work.content">{{work.content}}</p>
         </li>
       </ul>
     </section>
@@ -24,7 +25,8 @@
     <section v-if="filter(resume.projectHistory).length>0">
       <ul>
         <li v-for="project in filter(resume.projectHistory)">
-          {{project.project}} {{project.content}}
+         <h3>{{project.project}}</h3>
+         <span v-show="project.content"> {{project.content}}</span>
         </li>
       </ul>
     </section>
@@ -37,7 +39,8 @@
     <section v-if="filter(resume.rewardHistory).length>0">
       <ul>
         <li v-for="reward in filter(resume.rewardHistory)">
-          {{reward.reward}} {{reward.time}}
+          <h3>{{reward.reward}}</h3>
+          <p v-show="reward.time">{{reward.time}}</p>
         </li>
       </ul>
     </section>
@@ -50,7 +53,8 @@
     <section v-if="filter(resume.studyHistory).length>0">
       <ul>
         <li v-for="study in filter(resume.studyHistory)">
-          {{study.school}} {{study.duration}}
+         <h3> {{study.school}} </h3>
+         <p v-show="study.duration">{{study.duration}}</p>
         </li>
       </ul>
     </section>
@@ -126,6 +130,9 @@
 export default {
   props: ['resume'],
   methods: {
+    created(){
+      console.log(this.resume)
+    },
     filter(array) {
       return array.filter(item => !this.isEmpty(item))
     },

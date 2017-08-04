@@ -9,20 +9,19 @@
       <div v-else class="userActions">
         <a class="button primary" href='#' @click.prevent="signUpDialogVisible=true">注册</a>
         <a class="button" href="#" @click.prevent="signInDialogVisible=true">登录</a>
-        <el-button type="primary">保存</el-button>
-        <el-button v-on:click="preview">预览</el-button>
-        <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible=false">
-          <SignUpForm @success="signIn($event)"></SignUpForm>
+        <MyDialog title="注册" :visible="signUpDialogVisible" @close="signInDialogVisible=false">
+          <SignUpForm @success="signUP($event)"></SignUpForm>
         </MyDialog>
         <MyDialog title="登录" :visible="signInDialogVisible" @close="signInDialogVisible=false">
-          <SignUpForm @success="signIn($event)"></SignUpForm>
+          <SignInForm @success="signIn($event)"></SignInForm>
         </MyDialog>
   
       </div>
+      <el-button type="primary">保存</el-button>
+      <el-button v-on:click="preview">预览</el-button>
     </div>
   </div>
 </template>
-
 <style lang="scss">
 #topbar {
   display: flex;
@@ -51,7 +50,8 @@ export default {
   data() {
     return {
       signUpDialogVisible: false,
-      signInDialogVisible: false
+      signInDialogVisible: false,
+      currentUser: null,
     }
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
     }
   },
   components: {
-    MyDialog, SignUpForm
+    MyDialog, SignUpForm, SignInForm
   },
   methods: {
 
