@@ -88,13 +88,15 @@ body,
 }
 
 #app main {
+  min-width: 1024px;
+  max-width: 1440px;
   background: white;
   display: flex;
   flex: 1;
   width: 100%;
   align-self: center;
 
-  background: #DDD;
+  background: white;
   >.editor {
     width: 40em;
     margin: 16px 8px 16px 16px;
@@ -123,12 +125,8 @@ body,
 .previewMode #preview {
   max-width: 800px;
 
-  border: 2px solid red;
-  
-  display: block;
-  
-  
-  
+  margin: 32px auto;
+  width: 100%;
 }
 #exitPreview{
   display: none;

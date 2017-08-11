@@ -56,6 +56,7 @@ export default {
       user.setPassword(this.formData.password);
       user.signUp().then((loginedUser) => {
         this.currentUser = this.getCurrentUser()
+        this.$emit('success',getAVUser()) 
       }, (error) => {
        this.errorMessage=getErrorMessage(error)
       });
